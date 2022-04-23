@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Dark Souls Lite</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- importing the healthbar and the main JS file-->
+    <!-- <canvas id="canvas"></canvas> -->
+    <!-- <script type="text/javascript" src="health-bar.js"></script> -->
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <!--       dragon attack/sound/music/memory game -->
+    <h1>
+      <img
+        id="logo"
+        src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/dark-souls-logo-transparent-1.png?v=1650607292121"
+      />
+    </h1>
+
+    <p>
+      Dragon attack! <br />
+      Defend yourself by clicking the right sequence of actions!
+    </p>
+
+    <div id="timer" class="hidden"></div>
+
+    <button id="startBtn" onclick="startGame()">
+      Start
+      <audio
+        id="intro"
+        src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/Dark_Souls_You_Died_Sound_Effec_(getmp3.pro).mp3?v=1650668358523"
+      ></audio>
+    </button>
+
+    <button id="stopBtn" class="hidden" onclick="stopGame()">Stop</button>
+
+    <div id="gameButtonArea">
+      <button
+        id="button1"
+        onclick="guess(1)"
+        onmousedown="startTone(1), showImage(1)"
+        onmouseup="stopTone(), stopImage(1)"
+      >
+        <img
+          id="picture1"
+          class="hidden"
+          src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/pscwghxeqqeyjnrulure.jpeg?v=1650611780592"
+          alt="attack"
+        />
+        <audio
+          attack
+          src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/zapsplat_warfare_weapon_axe_large_object_swing_swoosh_001.mp3?v=1650666202890"
+          id="audio1"
+        ></audio>
+      </button>
+      <button
+        id="button2"
+        onclick="guess(2)"
+        onmousedown="startTone(2), showImage(2)"
+        onmouseup="stopTone(), stopImage(2)"
+      >
+        <img
+          id="picture2"
+          class="hidden"
+          src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/dzsvnb3j184sb1nj304t.jpeg?v=1650611780384"
+          alt="defend"
+        />
+        <audio
+          defend
+          src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/smartsound_WEAPONS_FLAMETHROWER_Medium_Heavy_Single_01.mp3?v=1650666453809"
+          id="audio2"
+        ></audio>
+      </button>
+      <button
+        id="button3"
+        onclick="guess(3)"
+        onmousedown="startTone(3), showImage(3)"
+        onmouseup="stopTone(), stopImage(3)"
+      >
+        <img
+          id="picture3"
+          class="hidden"
+          src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/character_soldier02.jpeg?v=1650612091782"
+          alt="dodgeLeft"
+        />
+        <audio
+          dodge_left
+          src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/zapsplat_human_male_man_angry_grunt_growl_short_001_74262.mp3?v=1650666829894"
+          id="audio3"
+        ></audio>
+      </button>
+      <button
+        id="button4"
+        onclick="guess(4)"
+        onmousedown="startTone(4), showImage(4)"
+        onmouseup="stopTone(), stopImage(4)"
+      >
+        <img
+          id="picture4"
+          class="hidden"
+          src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/Screen-Shot-2016-12-02-at-3.14.37-PM-dark-souls-3-knight-dodge.png?v=1650611782119"
+          alt="dodgeRight"
+        />
+        <audio
+          dodge_right
+          src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/zapsplat_human_male_man_angry_grunt_growl_short_002_74263.mp3?v=1650667582434"
+          id="audio4"
+        ></audio>
+      </button>
+      <button
+        id="button5"
+        onclick="guess(5)"
+        onmousedown="startTone(5), showImage(5)"
+        onmouseup="stopTone(), stopImage(5)"
+      >
+        <img
+          id="picture5"
+          class="hidden"
+          src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/png-transparent-clash-royale-clash-of-clans-goblin-knight-jump-desktop-clash-of-clans-liga-mobile-phones-fortnite-battle-royale.png?v=1650611780656"
+          alt="jump"
+        />
+        <audio
+          jump
+          src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/zapsplat_human_male_man_angry_grunt_growl_short_003_74264.mp3?v=1650667589756"
+          id="audio5"
+        ></audio>
+      </button>
+      <button
+        id="button6"
+        onclick="guess(6)"
+        onmousedown="startTone(6), showImage(6)"
+        onmouseup="stopTone(), stopImage(6)"
+      >
+        <img
+          id="picture6"
+          class="hidden"
+          src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/yygdhxlhm7zjaekzieth.jpeg?v=1650611780753"
+          alt="bow"
+        />
+        <audio
+          bow
+          src="https://cdn.glitch.global/6f4bbcfa-3877-47d7-81fc-00f2db4128b0/zapsplat_warfare_axe_or_other_heavy_weapon_swing_005_25155.mp3?v=1650666521968"
+          id="audio6"
+        ></audio>
+      </button>
+    </div>
+  </body>
+</html>
